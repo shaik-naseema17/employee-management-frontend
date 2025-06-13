@@ -60,17 +60,16 @@ const Detail = () => {
           <h2 className="text-2x1 font-bold mb-8 text-center">Leave Details</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <img
-                src={
-                  leave?.employeeId?.userId?.profileImage
-                    ? `hhttps://employee-management-backend-2bs2.onrender.com/${leave.employeeId.userId.profileImage}`
-                    : 'https://via.placeholder.com/150' // Fallback image
-                }
-                alt={`${
-                  leave?.employeeId?.userId?.name || 'Employee'
-                }'s profile`}
-                className="rounded-md shadow"
-              />
+             <img
+  src={
+    leave?.employeeId?.userId?.profileImage
+      ? `https://employee-management-backend-2bs2.onrender.com/${leave.employeeId.userId.profileImage}`
+      : 'https://via.placeholder.com/150'
+  }
+  alt={`${leave?.employeeId?.userId?.name || 'Employee'}'s profile`}
+  className="rounded-md shadow"
+/>
+
             </div>
             <div>
               <div className="flex space-x-3 mb-2">
