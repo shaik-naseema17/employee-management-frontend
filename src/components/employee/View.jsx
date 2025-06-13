@@ -39,9 +39,8 @@ const View = () => {
     </h2>
     <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
     <div>
-        <img
-            src={`https://employee-management-backend-2bs2.onrender.com/${employee.userId.profileImage}`}
-        />
+       <img src={`https://employee-management-backend-2bs2.onrender.com/uploads/${employee.userId.profileImage}`} />
+
     </div>
     <div>
         <div className='flex space-x-3 mb-5'>

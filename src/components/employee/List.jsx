@@ -28,7 +28,12 @@ const List = () => {
             dep_name: emp.department.dep_name,
             name:emp.userId.name,
             dob:new Date(emp.dob).toLocaleDateString(),
-            profileImage:<img width={40} className="rounded-full"src={`https://employee-management-backend-2bs2.onrender.com/${emp.userId.profileImage}`}/>,
+            profileImage:<img
+  width={40}
+  className="rounded-full"
+  src={`https://employee-management-backend-2bs2.onrender.com/uploads/${emp.userId.profileImage}`}
+/>
+,
             action: (
               <EmployeeButtons Id={emp._id}/>
             ),
