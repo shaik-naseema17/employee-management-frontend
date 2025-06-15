@@ -67,7 +67,7 @@ const Edit = () => {
 
 
         try{
-          const response= await axios.put(`hhttps://employee-management-backend-2bs2.onrender.com/api/employee/${id}`,employee,{
+          const response= await axios.put(`https://employee-management-backend-2bs2.onrender.com/api/employee/${id}`,employee,{
             headers:{
               "Authorization":`Bearer ${localStorage.getItem('token')}`
             }
