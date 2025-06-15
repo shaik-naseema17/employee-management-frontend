@@ -75,15 +75,7 @@ const Login = () => {
               required
             />
           </div>
-          <div className='mb-4 flex items-center justify-between'>
-            <label className='inline-flex items-center'>
-              <input type='checkbox' className='form-checkbox' />
-              <span className='ml-2 text-gray-700'>Remember me</span>
-            </label>
-            <a href='#' className='text-teal-600'>
-              Forgot password
-            </a>
-          </div>
+         
           <div className='mb-4'>
             <button
               type='submit'
