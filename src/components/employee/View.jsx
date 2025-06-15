@@ -39,7 +39,8 @@ const View = () => {
     </h2>
     <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
     <div>
-       <img src={`https://employee-management-backend-2bs2.onrender.com/uploads/${employee.userId.profileImage}`} />
+      <img src={employee.userId.profileImage} alt={`${employee.userId.name}'s profile`} className="rounded-md shadow" />
+
 
     </div>
     <div>
