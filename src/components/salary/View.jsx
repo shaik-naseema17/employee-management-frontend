@@ -10,23 +10,28 @@ const View = () => {
   let sno = 1;
 
   const fetchSalaries = async () => {
-    try {
-      const response = await axios.get(`https://employee-management-backend-2bs2.onrender.com/api/salary/${id}`, {
+  try {
+    const response = await axios.get(
+      `https://employee-management-backend-2bs2.onrender.com/api/salary/${id}`,
+      {
         headers: {
           "Authorization": `Bearer ${localStorage.getItem('token')}`
         }
-      });
-      console.log(response.data);
-      if (response.data.success) {
-        setSalaries(response.data.salary);
-        setFilteredSalaries(response.data.salary);
       }
-    } catch (error) {
-      if (error.response && !error.response.data.success) {
-        alert(error.message);
-      }
+    );
+    if (response.data.success) {
+      setSalaries(response.data.salary);
+      setFilteredSalaries(response.data.salary);
     }
-  };
+  } catch (error) {
+    if (error.response && error.response.status !== 404) {
+      console.error("Error fetching salary:", error.message);
+    }
+    setSalaries([]);
+    setFilteredSalaries([]);
+  }
+};
+
 
   useEffect(() => {
     fetchSalaries();
