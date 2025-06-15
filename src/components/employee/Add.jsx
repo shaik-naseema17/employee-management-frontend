@@ -6,14 +6,14 @@ const Add = () => {
     const [departments,setDepartments]=useState([])
     const [formData,setFormData]=useState({})
     const navigate=useNavigate();
-    useEffect(()=>{
-        const getDepartments=async()=>{
-        const departments= await fetchDepartments();
-        setDepartments(departments)
-        }
-        getDepartments(departments)
+    useEffect(() => {
+  const getDepartments = async () => {
+    const departments = await fetchDepartments();
+    setDepartments(departments);
+  };
+  getDepartments(); // No argument needed
+}, []);
 
-    },[])
     const handleChange=(e)=>{
         const{name,value,files}=e.target;
         if(name==="image"){
@@ -22,31 +22,36 @@ const Add = () => {
             setFormData((prevData)=>({...prevData,[name]:value}))
         }
     }
-    const handleSubmit=async (e)=>{
-        e.preventDefault()
-        const formDataObj=new FormData()
-        Object.keys(formData).forEach((key)=>{
-            formDataObj.append(key,formData[key])
-        })
+   const handleSubmit = async (e) => {
+  e.preventDefault();
+  const formDataObj = new FormData();
 
+  for (const key in formData) {
+    formDataObj.append(key, formData[key]);
+  }
 
-
-        try{
-          const response= await axios.post('https://employee-management-backend-2bs2.onrender.com/api/employee/add',formDataObj,{
-            headers:{
-              "Authorization":`Bearer ${localStorage.getItem('token')}`
-            }
-          })
-          if(response.data.success){
-            navigate("/admin-dashboard/employees")
-          }
-    
-        }catch(error){
-          if(error.response && !error.response.data.success){
-            alert(error.response.data.error)
-          }
-        }
+  try {
+    const response = await axios.post(
+      'https://employee-management-backend-2bs2.onrender.com/api/employee/add',
+      formDataObj,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
       }
+    );
+
+    if (response.data.success) {
+      navigate('/admin-dashboard/employees');
+    }
+  } catch (error) {
+    if (error.response && !error.response.data.success) {
+      alert(error.response.data.error);
+    }
+  }
+};
+
   return (
     <div className='max-w-4x1 mx-auto mt-10 bg-white p-8 rounded-md shadow-md'>
     <h2 className='text-2x1 font-bold mb-6'>Add New Employee</h2>
